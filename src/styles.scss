@@ -1,0 +1,29 @@
+/* You can add global styles to this file, and also import other style files */
+
+$spaceValue: 8px;
+.no-margin {
+  margin: 0px !important;
+}
+
+.no-padding {
+  padding: 0px !important;
+}
+
+@each $direction in ('top', 'right', 'bottom', 'left') {
+  /* We create `$selector` */
+  .margin-#{$direction} {
+    margin-#{$direction}: $spaceValue;
+  }
+  .padding-#{$direction} {
+    padding-#{$direction}: $spaceValue;
+  }
+  @each $multiplicator in (2, 3) {
+    /* We create `$selector` */
+    .margin-#{$direction}-x#{$multiplicator} {
+      margin-#{$direction}: $spaceValue*$multiplicator;
+    }
+    .padding-#{$direction}-x#{$multiplicator} {
+      padding-#{$direction}: $spaceValue*$multiplicator;
+    }
+  }
+}
