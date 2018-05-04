@@ -1,16 +1,131 @@
-<div fxLayout="row">
-  <div fxLayout="column">
-    <mat-card>
-      <img style="width:348px;" mat-card-image src="/assets/profile.jpg">
-      <mat-list mat-card-image>
-        <mat-list-item>
-          <mat-icon matListIcon>person</mat-icon>
-          <span class="margin-left">Adrien Peslerbe</span>
-        </mat-list-item>
-      </mat-list>
-    </mat-card>
-  </div>
-  <div fxFlex fxLayout="column">
-    <mat-card>Hello</mat-card>
+<div fxLayout="row" fxLayoutAlign="center">
+  <div fxLayout="column" fxLayoutGap="16px" fxFlex="1080px;">
+    <!--  <div fxLayout="column">
+      <span class="mat-display-1" style=" color:rgba(255,255,255,0.86);">
+        "L'imagination est plus importante que le savoir."
+      </span>
+      <span>
+        Albert Einstein
+      </span>
+    </div> -->
+    <div fxLayout="row" fxLayoutGap="16px">
+      <div fxLayout="column" fxLayoutGap="16px">
+        <mat-card style="width:248px;">
+          <img style=" margin-bottom:0px;" mat-card-image src="/assets/profile.jpg">
+          <mat-list>
+            <mat-list-item>
+              <mat-icon matListIcon>person</mat-icon>
+              <span class="margin-left">Adrien Peslerbe</span>
+            </mat-list-item>
+            <mat-list-item>
+              <mat-icon matListIcon>email</mat-icon>
+              <span class="margin-left">adrien@pesler.be</span>
+            </mat-list-item>
+            <mat-list-item>
+              <mat-icon matListIcon svgIcon="linkedin"></mat-icon>
+              <a href="https://github.com/PapyElGringo" class="margin-left">LinkedIn</a>
+            </mat-list-item>
+            <mat-list-item>
+              <mat-icon matListIcon svgIcon="github"></mat-icon>
+              <a href="https://github.com/PapyElGringo" class="margin-left">PapyElGringo</a>
+            </mat-list-item>
+          </mat-list>
+        </mat-card>
+        <mat-card style="width:248px;">
+          <mat-list>
+            <h3 matSubheader>Compétences</h3>
+            <mat-list-item>
+              <img style="border-radius:0px;" matListIcon src="assets/angular-icon.svg">
+              <span class="margin-left">Angular</span>
+            </mat-list-item>
+            <mat-list-item>
+              <img style="border-radius:0px;" matListIcon src="assets/material-icon.svg">
+              <span class="margin-left">Material Design</span>
+            </mat-list-item>
+            <mat-list-item>
+              <img style="border-radius:0px;" matListIcon src="assets/ionic-icon.svg">
+              <span class="margin-left">Ionic</span>
+            </mat-list-item>
+          </mat-list>
+        </mat-card>
+      </div>
+      <div fxFlex fxLayout="column">
+        <!-- <mat-card>
+        <mat-list class="experience-list">
+          <h3 matSubheader>Expériences</h3>
+          <ng-container *ngFor="let experience of experiences">
+            <mat-list-item style="height:auto;">
+              <mat-icon matListIcon>
+                {{experience.icon}}
+              </mat-icon>
+              <h2 fxLayout="row" fxLayoutAlign="start center" matLine>
+                <span fxFlex>{{experience.poste}}</span>
+                <span class="mat-caption">
+                  {{experience.startDate}} - {{experience.endDate}}
+                </span>
+              </h2>
+              <p matLine style="white-space: unset">
+                {{experience.description}}
+              </p>
+              <div matLine>
+                <mat-chip-list style="display:block;" class="padding-top padding-bottom">
+                  <mat-chip *ngFor="let tech of experience.technologies">
+                    <img class="mat-chip-avatar" [src]="tech.icon">
+                    <span>{{tech.name}}</span>
+                  </mat-chip>
+                </mat-chip-list>
+              </div>
+
+            </mat-list-item>
+          </ng-container>
+        </mat-list>
+      </mat-card> -->
+        <mat-accordion>
+          <mat-expansion-panel *ngFor="let experience of experiences; let index = index" [expanded]="index === 0 && loaded">
+
+            <mat-expansion-panel-header collapsedHeight="64px">
+              <mat-panel-title fxLayoutAlign="start center">
+                <mat-icon class="margin-right-x3">
+                  {{experience.icon}}
+                </mat-icon>
+                <div fxLayout="column">
+                  <span class="mat-body-2">{{experience.poste}}</span>
+                  <span class="mat-caption">
+                    {{experience.startDate}} - {{experience.endDate}}
+                  </span>
+                </div>
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+
+            <p class="mat-subheading-2">
+              {{experience.description}}
+            </p>
+
+            <ng-container *ngFor="let category of experience.categories">
+              <span class="mat-body-2">{{category.title}}</span>
+              <ul>
+                <li *ngFor="let bulletPoint of category.bulletPoints">
+                  {{bulletPoint}}
+                </li>
+              </ul>
+            </ng-container>
+
+
+            <span class="mat-body-2">Technologies utilisées</span>
+            <div>
+              <mat-chip-list style="display:block;" class="padding-top padding-bottom">
+                <mat-chip *ngFor="let tech of experience.technologies">
+                  <img class="mat-chip-avatar" [src]="tech.icon">
+                  <span>{{tech.name}}</span>
+                </mat-chip>
+              </mat-chip-list>
+            </div>
+            <mat-action-row>
+              <a *ngFor="let discovery of experience.discoveries" mat-button mat-raised-button color="accent" [href]="discovery.url" style="margin-right:8px;">{{discovery.name}}</a>
+            </mat-action-row>
+          </mat-expansion-panel>
+        </mat-accordion>
+      </div>
+    </div>
   </div>
 </div>

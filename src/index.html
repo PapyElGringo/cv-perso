@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="background">
 
 <head>
   <meta charset="utf-8">
@@ -11,9 +11,23 @@
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
 
+  <script src="https://www.gstatic.com/firebasejs/4.13.0/firebase.js"></script>
+  <script>
+    // Initialize Firebase
+    var config = {
+      apiKey: "AIzaSyDvbIbernu5OcPfDGVR0ndGe6qrXHScQCA",
+      authDomain: "cv-perso.firebaseapp.com",
+      databaseURL: "https://cv-perso.firebaseio.com",
+      projectId: "cv-perso",
+      storageBucket: "cv-perso.appspot.com",
+      messagingSenderId: "675638313746"
+    };
+    firebase.initializeApp(config);
+
+  </script>
 </head>
 
-<body class="mat-typography">
+<body class="mat-typography margin-x2">
   <app-root></app-root>
 </body>
 

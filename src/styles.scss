@@ -1,5 +1,11 @@
 /* You can add global styles to this file, and also import other style files */
 
+@import '~@angular/material/theming';
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+.background {
+  background: mat-color($mat-light-blue, 900);
+}
+
 $spaceValue: 8px;
 .no-margin {
   margin: 0px !important;
@@ -7,6 +13,14 @@ $spaceValue: 8px;
 
 .no-padding {
   padding: 0px !important;
+}
+
+.margin {
+  margin: $spaceValue;
+}
+
+.padding {
+  padding: $spaceValue;
 }
 
 @each $direction in ('top', 'right', 'bottom', 'left') {
@@ -18,6 +32,9 @@ $spaceValue: 8px;
     padding-#{$direction}: $spaceValue;
   }
   @each $multiplicator in (2, 3) {
+    .margin-x#{$multiplicator} {
+      margin: $spaceValue*$multiplicator;
+    }
     /* We create `$selector` */
     .margin-#{$direction}-x#{$multiplicator} {
       margin-#{$direction}: $spaceValue*$multiplicator;
@@ -26,4 +43,17 @@ $spaceValue: 8px;
       padding-#{$direction}: $spaceValue*$multiplicator;
     }
   }
+}
+
+.experience-list.mat-list {
+  .mat-list-item {
+    margin-bottom: 16px;
+    .mat-list-item-content {
+      align-items: flex-start;
+    }
+  }
+}
+
+.mat-chip-list-wrapper {
+  align-items: center !important;
 }
