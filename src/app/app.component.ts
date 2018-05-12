@@ -166,20 +166,23 @@ export class AppComponent implements OnInit {
     {
       icon: 'videogame_asset',
       poste: 'Développeur de jeu indépendant',
-      description: 'Développement de mon propre jeu video Objectifs : apprentissage de nouveaux langages, de nouvelles technologies, de nouvelles façons de résonner pour développer un produit de sa conception à sa commercialisation',
+      description: 'Développement de mon propre jeu video avec pour objectifs : apprentissage de nouveaux langages, de nouvelles technologies, de nouvelles façons de résonner pour développer un produit de sa conception à sa commercialisation',
       startDate: 'Juillet 2012',
       endDate: 'Juillet 2015',
       technologies: [
         this.technologies.pixiJs,
         this.technologies.javascript
-      ]
+      ],
+      discoveries: []
     },
     {
       icon: 'school',
       poste: 'BTS Informatique de Gestion option : développeur',
       description: '',
       startDate: '2010',
-      endDate: '2012'
+      endDate: '2012',
+      technologies: [],
+      discoveries: []
     }
   ];
   constructor(

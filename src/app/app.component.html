@@ -72,17 +72,19 @@
               </ul>
             </ng-container>
 
+            <ng-container *ngIf="experience.technologies.length">
+              <span class="mat-body-2">Technologies utilisées</span>
+              <div>
+                <mat-chip-list style="display:block;" class="padding-top padding-bottom">
+                  <mat-chip *ngFor="let tech of experience.technologies">
+                    <img class="mat-chip-avatar" [src]="tech.icon">
+                    <span>{{tech.name}}</span>
+                  </mat-chip>
+                </mat-chip-list>
+              </div>
+            </ng-container>
 
-            <span class="mat-body-2">Technologies utilisées</span>
-            <div>
-              <mat-chip-list style="display:block;" class="padding-top padding-bottom">
-                <mat-chip *ngFor="let tech of experience.technologies">
-                  <img class="mat-chip-avatar" [src]="tech.icon">
-                  <span>{{tech.name}}</span>
-                </mat-chip>
-              </mat-chip-list>
-            </div>
-            <mat-action-row fxLayout="column true" fxLayout.gt-sm="row" fxLayoutGap="16px">
+            <mat-action-row *ngIf="experience.discoveries.length" fxLayout="column true" fxLayout.gt-sm="row" fxLayoutGap="16px">
               <ng-container *ngFor="let discovery of experience.discoveries" [ngSwitch]="discovery.url != undefined">
                 <a *ngSwitchCase="true" mat-button mat-raised-button color="accent" [href]="discovery.url" style="margin-right:8px;">{{discovery.name}}</a>
                 <a *ngSwitchCase="false" mat-button mat-raised-button color="accent" (click)="discovery.callback();" style="margin-right:8px;">{{discovery.name}}</a>
