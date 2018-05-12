@@ -57,3 +57,10 @@ $spaceValue: 8px;
 .mat-chip-list-wrapper {
   align-items: center !important;
 }
+
+.no-padding-dialog {
+  .mat-dialog-container {
+    padding: 0;
+    overflow: unset;
+  }
+}

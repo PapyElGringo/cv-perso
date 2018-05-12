@@ -1,14 +1,16 @@
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { MatCardModule, MatChipsModule, MatExpansionModule, MatIconModule, MatListModule, MatButtonModule } from '@angular/material';
+import { MatButtonModule, MatCardModule, MatChipsModule, MatDialogModule, MatExpansionModule, MatIconModule, MatListModule } from '@angular/material';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppComponent } from './app.component';
+import { CnrsModalComponent } from './cnrs-modal/cnrs-modal.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    CnrsModalComponent
   ],
   imports: [
     BrowserModule,
@@ -20,9 +22,11 @@ import { AppComponent } from './app.component';
     MatIconModule,
     MatChipsModule,
     MatExpansionModule,
-    MatButtonModule
+    MatButtonModule,
+    MatDialogModule
   ],
   providers: [],
+  entryComponents: [CnrsModalComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

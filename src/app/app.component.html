@@ -1,16 +1,8 @@
 <div fxLayout="row" fxLayoutAlign="center">
-  <div fxLayout="column" fxLayoutGap="16px" fxFlex="1080px;">
-    <!--  <div fxLayout="column">
-      <span class="mat-display-1" style=" color:rgba(255,255,255,0.86);">
-        "L'imagination est plus importante que le savoir."
-      </span>
-      <span>
-        Albert Einstein
-      </span>
-    </div> -->
-    <div fxLayout="row" fxLayoutGap="16px">
-      <div fxLayout="column" fxLayoutGap="16px">
-        <mat-card style="width:248px;">
+  <div fxLayout="column" fxLayoutGap="16px" style="max-width:1080px;">
+    <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap="16px">
+      <div fxLayout="column" fxFlex.gt-sm="0 0 300px" fxLayoutGap="16px">
+        <mat-card>
           <img style=" margin-bottom:0px;" mat-card-image src="/assets/profile.jpg">
           <mat-list>
             <mat-list-item>
@@ -31,7 +23,7 @@
             </mat-list-item>
           </mat-list>
         </mat-card>
-        <mat-card style="width:248px;">
+        <mat-card>
           <mat-list>
             <h3 matSubheader>Compétences</h3>
             <mat-list-item>
@@ -50,36 +42,6 @@
         </mat-card>
       </div>
       <div fxFlex fxLayout="column">
-        <!-- <mat-card>
-        <mat-list class="experience-list">
-          <h3 matSubheader>Expériences</h3>
-          <ng-container *ngFor="let experience of experiences">
-            <mat-list-item style="height:auto;">
-              <mat-icon matListIcon>
-                {{experience.icon}}
-              </mat-icon>
-              <h2 fxLayout="row" fxLayoutAlign="start center" matLine>
-                <span fxFlex>{{experience.poste}}</span>
-                <span class="mat-caption">
-                  {{experience.startDate}} - {{experience.endDate}}
-                </span>
-              </h2>
-              <p matLine style="white-space: unset">
-                {{experience.description}}
-              </p>
-              <div matLine>
-                <mat-chip-list style="display:block;" class="padding-top padding-bottom">
-                  <mat-chip *ngFor="let tech of experience.technologies">
-                    <img class="mat-chip-avatar" [src]="tech.icon">
-                    <span>{{tech.name}}</span>
-                  </mat-chip>
-                </mat-chip-list>
-              </div>
-
-            </mat-list-item>
-          </ng-container>
-        </mat-list>
-      </mat-card> -->
         <mat-accordion>
           <mat-expansion-panel *ngFor="let experience of experiences; let index = index" [expanded]="index === 0 && loaded">
 
@@ -120,8 +82,12 @@
                 </mat-chip>
               </mat-chip-list>
             </div>
-            <mat-action-row>
-              <a *ngFor="let discovery of experience.discoveries" mat-button mat-raised-button color="accent" [href]="discovery.url" style="margin-right:8px;">{{discovery.name}}</a>
+            <mat-action-row fxLayout="column true" fxLayout.gt-sm="row" fxLayoutGap="16px">
+              <ng-container *ngFor="let discovery of experience.discoveries" [ngSwitch]="discovery.url != undefined">
+                <a *ngSwitchCase="true" mat-button mat-raised-button color="accent" [href]="discovery.url" style="margin-right:8px;">{{discovery.name}}</a>
+                <a *ngSwitchCase="false" mat-button mat-raised-button color="accent" (click)="discovery.callback();" style="margin-right:8px;">{{discovery.name}}</a>
+              </ng-container>
+
             </mat-action-row>
           </mat-expansion-panel>
         </mat-accordion>

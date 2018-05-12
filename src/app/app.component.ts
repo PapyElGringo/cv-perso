@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { MatIconRegistry } from '@angular/material';
+import { MatDialog, MatIconRegistry } from '@angular/material';
 import { DomSanitizer } from '@angular/platform-browser';
+import { CnrsModalComponent } from './cnrs-modal/cnrs-modal.component';
 
 @Component({
   selector: 'app-root',
@@ -122,7 +123,7 @@ export class AppComponent implements OnInit {
     },
     {
       icon: 'videogame_asset',
-      poste: 'Développeur de jeu indépendant pour le CNRS - Neting',
+      poste: 'Développeur de jeu indépendant pour le CNRS - Netting',
       categories: [
         {
           title: 'Recherche de Claire Bidart',
@@ -152,8 +153,13 @@ export class AppComponent implements OnInit {
       ],
       discoveries: [
         {
-          name: 'Jouer a Neting',
-          url: 'http://onelink.to/a2vh6t'
+          name: 'Jouer a Netting',
+          callback: () => {
+            this.matDialog.open(CnrsModalComponent, {
+              panelClass: 'no-padding-dialog',
+              disableClose: true
+            })
+          }
         }
       ]
     },
@@ -176,7 +182,11 @@ export class AppComponent implements OnInit {
       endDate: '2012'
     }
   ];
-  constructor(private matIconRegistry: MatIconRegistry, private sanitizer: DomSanitizer) {
+  constructor(
+    private matIconRegistry: MatIconRegistry,
+    private sanitizer: DomSanitizer,
+    private matDialog: MatDialog
+  ) {
     this.matIconRegistry.addSvgIcon('github', this.sanitizer.bypassSecurityTrustResourceUrl('./assets/icons/github-circle.svg'));
     this.matIconRegistry.addSvgIcon('linkedin', this.sanitizer.bypassSecurityTrustResourceUrl('./assets/icons/linkedin-box.svg'));
   }
