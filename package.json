@@ -51,6 +51,7 @@
     "karma-jasmine-html-reporter": "^1.5.4",
     "protractor": "~7.0.0",
     "ts-node": "~9.0.0",
-    "typescript": "3.9.2"
+    "typescript": "3.9.2",
+    "firebase-tools": "^8.15.1"
   }
 }
