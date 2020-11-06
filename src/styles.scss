@@ -1,9 +1,25 @@
 /* You can add global styles to this file, and also import other style files */
 
-@import '~@angular/material/theming';
+@import "~@angular/material/theming";
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
+@include mat-core();
+
+$material-theme: mat-light-theme(
+  (
+    color: (
+      primary: mat-palette($mat-indigo),
+      accent: mat-palette($mat-indigo),
+    ),
+  )
+);
+@include angular-material-theme($material-theme);
+
 .background {
-  background: mat-color($mat-light-blue, 900);
+  background: #101010;
+}
+
+.background-light-primary {
+  background: mat-color($mat-indigo, 50);
 }
 
 $spaceValue: 8px;
@@ -23,7 +39,7 @@ $spaceValue: 8px;
   padding: $spaceValue;
 }
 
-@each $direction in ('top', 'right', 'bottom', 'left') {
+@each $direction in ("top", "right", "bottom", "left") {
   /* We create `$selector` */
   .margin-#{$direction} {
     margin-#{$direction}: $spaceValue;
@@ -33,14 +49,14 @@ $spaceValue: 8px;
   }
   @each $multiplicator in (2, 3) {
     .margin-x#{$multiplicator} {
-      margin: $spaceValue*$multiplicator;
+      margin: $spaceValue * $multiplicator;
     }
     /* We create `$selector` */
     .margin-#{$direction}-x#{$multiplicator} {
-      margin-#{$direction}: $spaceValue*$multiplicator;
+      margin-#{$direction}: $spaceValue * $multiplicator;
     }
     .padding-#{$direction}-x#{$multiplicator} {
-      padding-#{$direction}: $spaceValue*$multiplicator;
+      padding-#{$direction}: $spaceValue * $multiplicator;
     }
   }
 }
@@ -56,11 +72,34 @@ $spaceValue: 8px;
 
 .mat-chip-list-wrapper {
   align-items: center !important;
+  .mat-chip {
+    background-color: rgba(0, 0, 0, 0.1);
+  }
 }
 
 .no-padding-dialog {
   .mat-dialog-container {
     padding: 0;
     overflow: unset;
+  }
+}
+
+.mat-card {
+  gallery {
+    height: 354px !important;
+    background-color: transparent !important;
+  }
+}
+
+strong {
+  font-weight: 500;
+}
+
+a[mat-list-item] {
+  mat-icon {
+    color: mat-color($mat-grey, 800);
+  }
+  span {
+    color: mat-color($mat-indigo, 500);
   }
 }

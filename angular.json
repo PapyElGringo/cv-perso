@@ -18,7 +18,12 @@
             "polyfills": "src/polyfills.ts",
             "assets": [
               "src/assets",
-              "src/favicon.ico"
+              "src/favicon.ico",
+              {
+                "glob": "mdi.svg",
+                "input": "./node_modules/@mdi/angular-material",
+                "output": "/assets/"
+              }
             ],
             "styles": [
               "src/styles.scss"

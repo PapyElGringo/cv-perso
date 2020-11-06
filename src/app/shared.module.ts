@@ -1,6 +1,5 @@
-import { HttpClientModule } from "@angular/common/http";
+import { CommonModule } from "@angular/common";
 import { NgModule } from "@angular/core";
-import { FlexLayoutModule } from "@angular/flex-layout";
 import { MatAutocompleteModule } from "@angular/material/autocomplete";
 import { MatBottomSheetModule } from "@angular/material/bottom-sheet";
 import { MatButtonModule } from "@angular/material/button";
@@ -25,16 +24,8 @@ import { MatSnackBarModule } from "@angular/material/snack-bar";
 import { MatStepperModule } from "@angular/material/stepper";
 import { MatTabsModule } from "@angular/material/tabs";
 import { MatToolbarModule } from "@angular/material/toolbar";
-import { BrowserModule } from "@angular/platform-browser";
-import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
-import { GalleryModule } from "ng-gallery";
-import { LightboxModule } from "ng-gallery/lightbox";
-import { AppComponent } from "./app.component";
-import { CnrsModalComponent } from "./cnrs-modal/cnrs-modal.component";
 import { MarkdownPipe } from "./markdown.pipe";
-import { TechnologiesViewerComponent } from "./technologies-viewer.component";
 
-TechnologiesViewerComponent;
 const materialModules = [
   MatTabsModule,
   MatCardModule,
@@ -64,23 +55,7 @@ const materialModules = [
 ];
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    CnrsModalComponent,
-    TechnologiesViewerComponent,
-    MarkdownPipe,
-  ],
-  imports: [
-    BrowserModule,
-    BrowserAnimationsModule,
-    FlexLayoutModule,
-    HttpClientModule,
-    ...materialModules,
-    GalleryModule,
-    LightboxModule,
-  ],
-  providers: [],
-  entryComponents: [CnrsModalComponent],
-  bootstrap: [AppComponent],
+  declarations: [MarkdownPipe],
+  exports: [CommonModule, ...materialModules, MarkdownPipe],
 })
-export class AppModule {}
+export class SharedModule {}

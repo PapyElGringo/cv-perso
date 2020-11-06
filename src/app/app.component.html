@@ -1,96 +1,189 @@
 <div fxLayout="row" fxLayoutAlign="center">
-  <div fxLayout="column" fxLayoutGap="16px" style="max-width:1080px;">
+  <div fxLayout="column" fxLayoutGap="16px" style="max-width: 1080px">
     <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap="16px">
       <div fxLayout="column" fxFlex.gt-sm="0 0 300px" fxLayoutGap="16px">
         <mat-card>
-          <img style=" margin-bottom:0px;" mat-card-image src="/assets/profile.jpg">
-          <mat-list>
-            <mat-list-item>
-              <mat-icon matListIcon>person</mat-icon>
-              <span class="margin-left">Adrien Peslerbe</span>
-            </mat-list-item>
-            <mat-list-item>
-              <mat-icon matListIcon>email</mat-icon>
+          <img mat-card-image src="/assets/500x500_pop_art.png" />
+          <mat-card-content style="margin-bottom: 8px">
+            <p>
+              I'm <strong>Adrien Peslerbe</strong> a passionate product designer
+              and developer. Also known as <strong>PapyElGringo</strong>,
+              creator of <strong>Material Shell</strong>.
+            </p>
+          </mat-card-content>
+          <mat-nav-list style="margin: 0 -16px">
+            <a mat-list-item color="primary" href="mailto:adrien@pesler.be">
+              <mat-icon class="margin-left-x3 margin-right-x2">email</mat-icon>
               <span class="margin-left">adrien@pesler.be</span>
-            </mat-list-item>
-            <mat-list-item>
-              <mat-icon matListIcon svgIcon="linkedin"></mat-icon>
-              <a href="https://github.com/PapyElGringo" class="margin-left">LinkedIn</a>
-            </mat-list-item>
-            <mat-list-item>
-              <mat-icon matListIcon svgIcon="github"></mat-icon>
-              <a href="https://github.com/PapyElGringo" class="margin-left">PapyElGringo</a>
-            </mat-list-item>
-          </mat-list>
+            </a>
+            <a
+              mat-list-item
+              href="https://www.linkedin.com/in/adrien-peslerbe/"
+            >
+              <mat-icon
+                class="margin-left-x3 margin-right-x2"
+                svgIcon="linkedin"
+              ></mat-icon>
+              <span class="margin-left">LinkedIn</span>
+            </a>
+            <a mat-list-item href="https://github.com/PapyElGringo">
+              <mat-icon
+                class="margin-left-x3 margin-right-x2"
+                svgIcon="github"
+              ></mat-icon>
+              <span class="margin-left">Github</span>
+            </a>
+            <a mat-list-item href="https://twitter.com/PapyElGringo">
+              <mat-icon
+                class="margin-left-x3 margin-right-x2"
+                svgIcon="twitter"
+              ></mat-icon>
+              <span class="margin-left">Twitter</span>
+            </a>
+          </mat-nav-list>
+        </mat-card>
+        <mat-card>
+          <mat-nav-list>
+            <h3 matSubheader>Hire me on</h3>
+            <a mat-list-item href="https://www.malt.fr/profile/adrienpeslerbe">
+              <img
+                style="border-radius: 0px; width: 24px"
+                class="margin-left margin-right-x2"
+                src="assets/malt.png"
+              />
+              <span class="margin-left">Malt</span>
+            </a>
+            <a
+              mat-list-item
+              href="https://www.upwork.com/freelancers/~01ff40b8cfc9e9c128"
+            >
+              <img
+                style="border-radius: 0px; width: 24px"
+                class="margin-left margin-right-x2"
+                src="assets/upwork.png"
+              />
+              <span class="margin-left">Upwork</span>
+            </a>
+          </mat-nav-list>
         </mat-card>
         <mat-card>
           <mat-list>
-            <h3 matSubheader>Compétences</h3>
-            <mat-list-item>
-              <img style="border-radius:0px;" matListIcon src="assets/angular-icon.svg">
-              <span class="margin-left">Angular</span>
-            </mat-list-item>
-            <mat-list-item>
-              <img style="border-radius:0px;" matListIcon src="assets/material-icon.svg">
-              <span class="margin-left">Material Design</span>
-            </mat-list-item>
-            <mat-list-item>
-              <img style="border-radius:0px;" matListIcon src="assets/ionic-icon.svg">
-              <span class="margin-left">Ionic</span>
+            <h3 matSubheader>Skills</h3>
+            <mat-list-item *ngFor="let skill of skills; let skillIndex = index">
+              <img
+                style="border-radius: 0px; width: 24px"
+                class="margin-left margin-right-x2"
+                [src]="skill.icon"
+              />
+              <span class="margin-left">{{ skill.name }}</span>
             </mat-list-item>
           </mat-list>
         </mat-card>
       </div>
       <div fxFlex fxLayout="column">
-        <mat-accordion>
-          <mat-expansion-panel *ngFor="let experience of experiences; let index = index" [expanded]="index === 0 && loaded">
-
+        <mat-accordion multi>
+          <mat-expansion-panel
+            *ngFor="let experience of experiences; let experienceIndex = index"
+            [expanded]="experienceIndex === 0"
+          >
             <mat-expansion-panel-header collapsedHeight="64px">
               <mat-panel-title fxLayoutAlign="start center">
-                <mat-icon class="margin-right-x3">
-                  {{experience.icon}}
-                </mat-icon>
+                <div class="margin-right-x3">
+                  <mat-icon *ngIf="experience.icon">
+                    {{ experience.icon }}
+                  </mat-icon>
+                  <img
+                    *ngIf="experience.logo"
+                    width="24"
+                    [src]="experience.logo"
+                  />
+                </div>
                 <div fxLayout="column">
-                  <span class="mat-body-2">{{experience.poste}}</span>
+                  <span class="mat-body-2">{{ experience.poste }}</span>
                   <span class="mat-caption">
-                    {{experience.startDate}} - {{experience.endDate}}
+                    {{ experience.startDate }} - {{ experience.endDate }}
                   </span>
                 </div>
               </mat-panel-title>
             </mat-expansion-panel-header>
 
-            <p class="mat-subheading-2">
-              {{experience.description}}
-            </p>
+            <p
+              class="mat-subheading-2"
+              [innerHTML]="experience.description | markdown"
+            ></p>
 
             <ng-container *ngFor="let category of experience.categories">
-              <span class="mat-body-2">{{category.title}}</span>
+              <span class="mat-body-2">{{ category.title }}</span>
               <ul>
                 <li *ngFor="let bulletPoint of category.bulletPoints">
-                  {{bulletPoint}}
+                  {{ bulletPoint }}
                 </li>
               </ul>
             </ng-container>
+            <div style="margin-bottom: -12px">
+              <mat-card
+                class="background-light-primary mat-elevation-z0 margin-bottom-x2"
+                *ngFor="
+                  let product of experience.products;
+                  let productIndex = index
+                "
+              >
+                <p class="mat-subheading-2" style="font-weight: 500">
+                  {{ product.title }}
+                </p>
+                <p [innerHTML]="product.description | markdown"></p>
+                <ng-container *ngIf="product.showcases.length">
+                  <gallery
+                    class="margin-top-x2 margin-bottom-x2"
+                    [id]="'gallery_' + experienceIndex + '_' + productIndex"
+                    [items]="product.showcases"
+                    [thumb]="false"
+                    [counter]="false"
+                    [gallerize]="
+                      'gallerize_' + experienceIndex + '_' + productIndex
+                    "
+                  ></gallery>
+                </ng-container>
 
-            <ng-container *ngIf="experience.technologies.length">
-              <span class="mat-body-2">Technologies utilisées</span>
-              <div>
-                <mat-chip-list style="display:block;" class="padding-top padding-bottom">
-                  <mat-chip *ngFor="let tech of experience.technologies">
-                    <img class="mat-chip-avatar" [src]="tech.icon">
-                    <span>{{tech.name}}</span>
-                  </mat-chip>
-                </mat-chip-list>
-              </div>
-            </ng-container>
+                <ng-container *ngIf="product.technologies.length">
+                  <technologies-viewer
+                    [technologies]="product.technologies"
+                  ></technologies-viewer>
+                </ng-container>
 
-            <mat-action-row *ngIf="experience.discoveries.length" fxLayout="column true" fxLayout.gt-sm="row" fxLayoutGap="16px">
-              <ng-container *ngFor="let discovery of experience.discoveries" [ngSwitch]="discovery.url != undefined">
-                <a *ngSwitchCase="true" mat-button mat-raised-button color="accent" [href]="discovery.url" style="margin-right:8px;">{{discovery.name}}</a>
-                <a *ngSwitchCase="false" mat-button mat-raised-button color="accent" (click)="discovery.callback();" style="margin-right:8px;">{{discovery.name}}</a>
-              </ng-container>
-
-            </mat-action-row>
+                <mat-card-actions
+                  *ngIf="product.links.length"
+                  fxLayout="column true"
+                  fxLayout.gt-sm="row"
+                  fxLayoutGap="16px"
+                  align="end"
+                >
+                  <ng-container
+                    *ngFor="let discovery of product.links"
+                    [ngSwitch]="discovery.url != undefined"
+                  >
+                    <a
+                      *ngSwitchCase="true"
+                      mat-button
+                      mat-raised-button
+                      color="accent"
+                      [href]="discovery.url"
+                      style="margin-right: 8px"
+                      >{{ discovery.name }}</a
+                    >
+                    <a
+                      *ngSwitchCase="false"
+                      mat-button
+                      mat-raised-button
+                      color="accent"
+                      (click)="discovery.callback()"
+                      style="margin-right: 8px"
+                      >{{ discovery.name }}</a
+                    >
+                  </ng-container>
+                </mat-card-actions>
+              </mat-card>
+            </div>
           </mat-expansion-panel>
         </mat-accordion>
       </div>
