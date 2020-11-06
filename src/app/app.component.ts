@@ -100,8 +100,8 @@ export class AppComponent implements OnInit {
           ],
           links: [
             {
-              name: "View the source on Github",
-              url: "https://github.com/material-shell/material-shell",
+              name: "Try tastr on Mobile",
+              url: "https://m.tastr.us",
             },
           ],
         },
